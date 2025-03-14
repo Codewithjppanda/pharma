@@ -12,7 +12,12 @@ export default function ContactForm() {
 
   useEffect(() => {
     // Initialize EmailJS with your public key
-    emailjs.init("-GXt2lsJOCpEMzA5i") // Replace with your EmailJS public key
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    if (publicKey) {
+      emailjs.init(publicKey)
+    } else {
+      console.error("EmailJS public key is not defined")
+    }
   }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -22,10 +27,17 @@ export default function ContactForm() {
 
     try {
       if (!formRef.current) return
+      
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+      
+      if (!serviceId || !templateId) {
+        throw new Error("EmailJS service ID or template ID is not defined")
+      }
 
       await emailjs.sendForm(
-        "service_nbfi6k9", // Replace with your EmailJS service ID
-        "template_70je7es", // Replace with your EmailJS template ID
+        serviceId,
+        templateId,
         formRef.current
       )
 
