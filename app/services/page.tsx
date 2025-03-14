@@ -5,7 +5,6 @@ import Link from "next/link"
 import { CheckCircle2, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid"
-import emailjs from "emailjs-com"
 
 export default function ServicesPage() {
   return (
