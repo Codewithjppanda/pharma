@@ -1,8 +1,4 @@
-Here is a suggested README for your dental care project repository:
-
----
-
-# Dental Care Website
+Dental Care Website
 
 This repository contains the code for a modern, responsive dental care website built using Next.js, Framer Motion, and Tailwind CSS. The website is designed to showcase dental services, including general dentistry, orthodontics, and cosmetic dentistry. It also includes animations and smooth transitions using Framer Motion to provide an engaging user experience.
 
